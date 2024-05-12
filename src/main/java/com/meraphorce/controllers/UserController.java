@@ -24,4 +24,23 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers(){
         return ResponseEntity.ok(userService.getAllUsers());
     }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Integer id){
+    	User user = userService.getUserById( id );
+        return ResponseEntity.ok( user );
+    }
+    
+    @PutMapping
+    public ResponseEntity<User> updateUser(@RequestBody User user){
+    	user = userService.updateUser( user );
+        return ResponseEntity.ok( user );
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer id){
+    	userService.deleteUser( id );
+        return ResponseEntity.ok().build();
+    }
+    
 }
